@@ -13,12 +13,16 @@ app.use(express.static(join(__dirname, "/uploads")));
 app.use(express.static(join(__dirname, "/pdfUploads")));
 
 import connection from "./db/connection.js";
-import Admin from "./models/admin.model.js";
 
 import adminRoutes from "./routes/adminRoutes.js";
 import recordRoutes from "./routes/recordRoutes.js";
 app.use("/record", recordRoutes);
 app.use("/admin", adminRoutes);
+app.get("/", (req, res) => {
+  res.json({
+    message: "The Backend is Running",
+  });
+});
 
 app.listen(process.env.PORT || 3000, async () => {
   console.log(`Server running on port ${process.env.PORT}`);
