@@ -36,9 +36,7 @@ const submitForm = async (req, res) => {
 
 const allRecords = async (req, res) => {
   try {
-    console.log("ayo hai all record ma vite bata pani ");
     const records = await Record.find();
-    console.log(records);
     res.status(200).json({
       success: true,
       records,
